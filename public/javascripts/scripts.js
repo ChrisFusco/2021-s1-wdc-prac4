@@ -72,3 +72,42 @@ function update() {
         x.send();
     }, 10000);
 }
+
+function contactClick() {
+    var x = new XMLHttpRequest();
+
+    x.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("main").innerHTML = this.responseText;
+        }
+    };
+
+    x.open("GET", "/contact.ajax", true);
+    x.send();
+}
+
+function searchClick() {
+    var x = new XMLHttpRequest();
+
+    x.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("main").innerHTML = this.responseText;
+        }
+    };
+
+    x.open("GET", "/search.ajax", true);
+    x.send();
+}
+
+function aboutClick() {
+    var x = new XMLHttpRequest();
+
+    x.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("main").innerHTML = this.responseText;
+        }
+    };
+
+    x.open("GET", "/about.ajax", true);
+    x.send();
+}

@@ -158,6 +158,20 @@ router.get('/log-ro.json', function(req, res, next) {
   res.json(logs2);
 });
 
+router.get('/contact.ajax', function(req, res, next) {
+  res.send("<a href='a1777739@student.adelaide.edu.au'>Link</a>");
+});
+
+router.get('/search.ajax', function(req, res, next) {
+  res.send(" \
+    <input type='text'> \
+    <button>search</button> \
+    ");
+});
+
+router.get('/about.ajax', function(req, res, next) {
+  res.sendFile("about.ajax");
+});
 
 
 
