@@ -75,7 +75,7 @@ router.get('/log.html', function(req, res, next) {
   <!DOCTYPE html> \
     <html> \
         <head> \
-            <title>Color</title> \
+            <title>Logs</title> \
         </head> \
         <body> \
           <ul> \
@@ -84,6 +84,49 @@ router.get('/log.html', function(req, res, next) {
         </body> \
     </html> \
   ');
+});
+
+var visited_first = false;
+router.get('/first.html', function(req, res, next) {
+  // Redirect
+  if (visited_first) {
+    res.redirect('/main.html');
+  }
+  else {
+    res.send('\
+    <!DOCTYPE html> \
+      <html> \
+          <head> \
+              <title>First</title> \
+          </head> \
+          <body> \
+            <h1><a href="main.html">Welcome</a></h1> \
+          </body> \
+      </html> \
+    ');
+  }
+  visited_first = true;
+});
+
+router.get('/main.html', function(req, res, next) {
+  if (visited_first) {
+    res.send('\
+    <!DOCTYPE html> \
+      <html> \
+          <head> \
+              <title>First</title> \
+          </head> \
+          <body> \
+            <h1>My main site</h1> \
+            <p>Random text pog</p> \
+          </body> \
+      </html> \
+    ');
+  }
+  // Redirect
+  else {
+    res.redirect("/first.html");
+  }
 });
 
 module.exports = router;
