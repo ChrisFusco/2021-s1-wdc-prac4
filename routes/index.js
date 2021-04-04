@@ -173,6 +173,21 @@ router.get('/about.ajax', function(req, res, next) {
   res.sendFile("about.ajax");
 });
 
+var accepted = false;
+router.get('/accept', function(req, res, next) {
+  accepted = true;
+  res.sendStatus(200).end();
+});
+
+router.get('/content.ajax', function(req, res, next) {
+  if (accepted) {
+    res.send("<p>Paragraph 1</p><p>Paragraph 2</p>");
+  }
+  else {
+    res.sendStatus(403).end();
+  }
+});
+
 
 
 module.exports = router;

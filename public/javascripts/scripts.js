@@ -111,3 +111,43 @@ function aboutClick() {
     x.open("GET", "/about.ajax", true);
     x.send();
 }
+
+function loadContent() {
+    var x = new XMLHttpRequest();
+
+    x.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                document.getElementById("div").innerHTML = this.responseText;
+            }
+            else if (this.status == 403) {
+                var button = document.createElement("button");
+                var paragraph = document.createElement("p");
+                paragraph.appendChild(document.createTextNode("Accept by clicking the button below."));
+                button.innerHTML = "Accept";
+                button.onclick = accept;
+                
+                document.getElementById("div").innerHTML = "";
+                document.getElementById("div").appendChild(paragraph);
+                document.getElementById("div").appendChild(button);
+            }
+
+        }
+    };
+
+    x.open("GET", "/content.ajax", true);
+    x.send();
+}
+
+function accept() {
+    var x = new XMLHttpRequest();
+
+    x.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            loadContent();
+        }
+    };
+
+    x.open("GET", "/accept", true);
+    x.send();
+}
