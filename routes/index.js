@@ -129,4 +129,26 @@ router.get('/main.html', function(req, res, next) {
   }
 });
 
+var color2 = "red";
+router.get('/color.txt', function(req, res, next) {
+  res.send(color2);
+
+  if (color2 == "red") {
+    color2 = "yellow";
+  }
+  else if (color2 == "yellow") {
+    color2 = "green";
+  }
+  else if (color2 == "green") {
+    color2 = "blue";
+  }
+  else if (color2 == "blue") {
+    color2 = "red";
+  }
+});
+
+
+
+
+
 module.exports = router;
