@@ -1,0 +1,4 @@
+curl --request HEAD \
+  --url https://google.com/ \
+  --header 'x-tebex-secret: 978af19e529d4c9e01bed2222352393a571c22ef' \
+  --cookie '1P_JAR=2021-04-04-06; NID=212%3DY2HtYDDTXfwHciFiFU37qjkKENY_ttg0ZnfC9s0qa8qub5aKGjvEd5dUn-plaK8-NOstyQS9KdW4AFHEfs_8-OsToSCJEaXAQNhoIn_ZO7sCICfiy9-ZR4QJ7zhT_dF2CUhscoxYIney52zq_fpuxIUlP1JeQcVxEansQiLQjtc'
