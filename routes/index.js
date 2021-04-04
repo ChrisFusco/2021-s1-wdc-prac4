@@ -147,6 +147,16 @@ router.get('/color.txt', function(req, res, next) {
   }
 });
 
+var logs2 = [];
+router.get('/log.json', function(req, res, next) {
+  logs2.push(new Date().toString());
+
+  res.json(logs2);
+});
+
+router.get('/log-ro.json', function(req, res, next) {
+  res.json(logs2);
+});
 
 
 

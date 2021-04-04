@@ -24,3 +24,51 @@ function updateColors() {
     x.open("GET", "/color.txt", true);
     x.send();
 }
+
+function updateLogs() {
+    var x = new XMLHttpRequest();
+
+    x.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("main").innerHTML = "";
+            var logs = JSON.parse(this.responseText);
+            var ul = document.createElement("ul");
+            var li;
+
+            for (var i = 0; i < logs.length; i++) {
+                li = document.createElement("li");
+                li.appendChild(document.createTextNode(logs[i]));
+                ul.appendChild(li);
+            }
+            document.getElementById("main").appendChild(ul);
+        }
+    };
+
+    x.open("GET", "/log.json", true);
+    x.send();
+}
+
+function update() {
+    setInterval(function() {
+        var x = new XMLHttpRequest();
+
+        x.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("main").innerHTML = "";
+                var logs = JSON.parse(this.responseText);
+                var ul = document.createElement("ul");
+                var li;
+
+                for (var i = 0; i < logs.length; i++) {
+                    li = document.createElement("li");
+                    li.appendChild(document.createTextNode(logs[i]));
+                    ul.appendChild(li);
+                }
+                document.getElementById("main").appendChild(ul);
+            }
+        };
+
+        x.open("GET", "/log-ro.json", true);
+        x.send();
+    }, 10000);
+}
