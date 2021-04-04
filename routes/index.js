@@ -68,7 +68,7 @@ router.get('/log.html', function(req, res, next) {
 
   var unordered_list = "";
   for (var i = 0; i < logs.length; i++) {
-    unordered_list += "<li>" + logs[i] + "</li>"
+    unordered_list += "<li>" + logs[i] + "</li>";
   }
 
   res.send('\
