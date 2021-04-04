@@ -34,4 +34,32 @@ router.get('/last.txt', function(req, res, next) {
   data[0] = new Date().toString();
 });
 
+var color = "red";
+router.get('/color.html', function(req, res, next) {
+  res.send('\
+  <!DOCTYPE html> \
+    <html> \
+        <head> \
+            <title>Color</title> \
+        </head> \
+        <body> \
+          <h1 style="color: ' + color + ';">' + color + '</h1> \
+        </body> \
+    </html> \
+  ');
+
+  if (color == "red") {
+    color = "yellow";
+  }
+  else if (color == "yellow") {
+    color = "green";
+  }
+  else if (color == "green") {
+    color = "blue";
+  }
+  else if (color == "blue") {
+    color = "red";
+  }
+});
+
 module.exports = router;
