@@ -62,4 +62,28 @@ router.get('/color.html', function(req, res, next) {
   }
 });
 
+var logs = [];
+router.get('/log.html', function(req, res, next) {
+  logs.push(new Date().toString());
+
+  var unordered_list = "";
+  for (var i = 0; i < logs.length; i++) {
+    unordered_list += "<li>" + logs[i] + "</li>"
+  }
+
+  res.send('\
+  <!DOCTYPE html> \
+    <html> \
+        <head> \
+            <title>Color</title> \
+        </head> \
+        <body> \
+          <ul> \
+          ' + unordered_list + ' \
+          </ul> \
+        </body> \
+    </html> \
+  ');
+});
+
 module.exports = router;
